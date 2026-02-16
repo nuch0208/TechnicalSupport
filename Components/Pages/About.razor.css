@@ -1,0 +1,352 @@
+/* ---------- Page Base ---------- */
+.startup-page {
+    background: #ffffff;
+}
+
+/* ---------- Nav ---------- */
+.startup-nav {
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+.startup-nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 72px;
+    gap: 16px;
+}
+
+.startup-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.startup-brand-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: #2f80ed;
+    position: relative;
+}
+.startup-brand-icon::after{
+    content:"";
+    position:absolute;
+    inset: 9px 10px 9px 10px;
+    border-radius: 999px;
+    background:#fff;
+    opacity:.9;
+}
+
+.startup-brand-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #2f80ed;
+    letter-spacing: .2px;
+}
+
+.startup-menu a {
+    text-decoration: none;
+    color: #111827;
+    font-weight: 600;
+    padding: 22px 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 2px solid transparent;
+}
+.startup-menu a:hover {
+    color: #2f80ed;
+}
+.startup-menu a.active {
+    color: #2f80ed;
+    border-bottom-color: #2f80ed;
+}
+
+.startup-dropdown {
+    position: relative;
+}
+.startup-dropdown-menu {
+    position: absolute;
+    top: 62px;
+    left: 0;
+    min-width: 180px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+    padding: 8px;
+    display: none;
+}
+.startup-dropdown:hover .startup-dropdown-menu {
+    display: block;
+}
+.startup-dropdown-menu a {
+    padding: 10px 12px;
+    border-radius: 10px;
+    width: 100%;
+    border-bottom: none;
+}
+.startup-dropdown-menu a:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.startup-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.startup-icon-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.startup-icon-btn:hover {
+    background: #f9fafb;
+}
+.startup-search-icon {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #64748b;
+    border-radius: 999px;
+    position: relative;
+}
+.startup-search-icon::after {
+    content:"";
+    width: 9px;
+    height: 2px;
+    background:#64748b;
+    position:absolute;
+    right: -7px;
+    bottom: -3px;
+    transform: rotate(45deg);
+    border-radius: 999px;
+}
+
+.startup-download-btn {
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+}
+
+/* ---------- Section ---------- */
+.startup-section {
+    padding: 64px 0 80px;
+}
+
+.startup-kicker {
+    color: #2f80ed;
+    font-weight: 800;
+    letter-spacing: .14em;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.startup-title {
+    font-size: 44px;
+    line-height: 1.12;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 16px;
+}
+
+.startup-title-underline {
+    width: 110px;
+    height: 5px;
+    background: #2f80ed;
+    border-radius: 999px;
+    margin-bottom: 22px;
+}
+
+.startup-lead {
+    color: #6b7280;
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* ---------- Checklist ---------- */
+.startup-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.startup-checklist li {
+    position: relative;
+    padding-left: 30px;
+    margin: 10px 0;
+    font-weight: 700;
+    color: #0f172a;
+}
+.startup-checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #2f80ed;
+    font-weight: 900;
+}
+
+/* ---------- Call box ---------- */
+.startup-callbox {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 14px 16px;
+    max-width: 360px;
+}
+
+.startup-call-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: #2f80ed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+.startup-phone-icon {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    position: relative;
+}
+.startup-phone-icon::after{
+    content:"";
+    position:absolute;
+    width: 8px;
+    height: 2px;
+    background:#fff;
+    left: 3px;
+    bottom: -6px;
+    border-radius: 999px;
+}
+
+.startup-call-label {
+    color: #64748b;
+    font-weight: 700;
+    font-size: 14px;
+}
+.startup-call-number {
+    color: #2f80ed;
+    font-weight: 900;
+    font-size: 22px;
+}
+
+/* ---------- Buttons ---------- */
+.startup-quote-btn {
+    border-radius: 12px;
+    padding: 12px 18px;
+    font-weight: 800;
+}
+
+/* ---------- Image ---------- */
+.startup-image-card {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(2, 6, 23, 0.12);
+    background: #fff;
+}
+.startup-image-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ---------- Scroll to top ---------- */
+.startup-scrolltop {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: none;
+    background: #2f80ed;
+    color: #fff;
+    font-weight: 900;
+    box-shadow: 0 16px 30px rgba(47,128,237,.35);
+}
+.startup-scrolltop:hover {
+    filter: brightness(.95);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991px) {
+    .startup-title { font-size: 34px; }
+    .startup-menu { display: none !important; }
+}
+
+.startup-image-card {
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 18px 40px rgba(2, 6, 23, 0.12);
+}
+
+.startup-image-card img {
+    width: 100%;
+    height: auto;   /* 👈 สำคัญ */
+    display: block;
+}
+
+.startup-brand-text small {
+    font-size: 12px;
+    font-weight: 500;
+    display: block;
+    line-height: 1.2;
+}
+
+
+.startup-nav {
+    background: #5f63d6;   /* สีฟ้าตามรูป */
+    color: white;
+}
+
+.startup-brand-text {
+    color: white;
+}
+
+.startup-menu a {
+    color: rgba(255,255,255,0.85);
+}
+
+.startup-menu a:hover,
+.startup-menu a.active {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+.startup-download-btn {
+    background: #ffffff;
+    color: #5f63d6;
+    border: none;
+    font-weight: 700;
+}
+
+.startup-download-btn:hover {
+    background: #f3f4ff;
+}
+
+

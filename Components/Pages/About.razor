@@ -1,0 +1,131 @@
+@page "/about"
+
+@layout MinimalLayout
+@inherits LayoutComponentBase
+@using TechnicalSupport.Components.Layout
+
+
+<PageTitle>About</PageTitle>
+
+<div class="startup-page">
+
+    <!-- Top Nav -->
+    <header class="startup-nav shadow-sm">
+        <div class="container startup-nav-inner">
+            <a class="startup-brand" href="/">
+                <span class="startup-brand-icon"></span>
+                <span class="startup-brand-text">
+                    บริษัท เทคนิคคัล ซัพพอร์ต แอนด์ เซอร์วิส จำกัด<br />
+                    Technical Support and Service Co., Ltd.
+                </span>
+            </a>
+
+
+            <nav class="startup-menu d-none d-lg-flex">
+                <a class="active" href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/services">Services</a>
+
+                <div class="startup-dropdown">
+                    <a href="javascript:void(0)">Blog ▾</a>
+                    <div class="startup-dropdown-menu">
+                        <a href="/blog">Blog List</a>
+                        <a href="/blogdetail/1">Blog Detail</a>
+                    </div>
+                </div>
+
+                <div class="startup-dropdown">
+                    <a href="javascript:void(0)">Pages ▾</a>
+                    <div class="startup-dropdown-menu">
+                        <a href="/pricing">Pricing</a>
+                        <a href="/faq">FAQ</a>
+                    </div>
+                </div>
+
+                <a href="/contact">Contact</a>
+            </nav>
+
+            <div class="startup-actions">
+                <button class="startup-icon-btn" title="Search" type="button">
+                    <span class="startup-search-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <main class="startup-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <!-- Left -->
+                <div class="col-12 col-lg-6">
+                    <div class="startup-kicker">ABOUT US</div>
+
+                    <h1 class="startup-title">
+                        The Best IT Solution With 10 Years of Experience
+                    </h1>
+
+                    <div class="startup-title-underline"></div>
+
+                    <p class="startup-lead">
+                        Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit.
+                        Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit,
+                        sed stet no labore lorem sit. Sanctus clita duo justo et tempor
+                        eirmod magna dolore erat amet
+                    </p>
+
+                    <div class="row mt-4 g-3">
+                        <div class="col-12 col-md-6">
+                            <ul class="startup-checklist">
+                                <li>Award Winning</li>
+                                <li>Professional Staff</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <ul class="startup-checklist">
+                                <li>24/7 Support</li>
+                                <li>Fair Prices</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="startup-callbox mt-4">
+                        <div class="startup-call-icon">
+                            <span class="startup-phone-icon"></span>
+                        </div>
+                        <div class="startup-call-content">
+                            <div class="startup-call-label">Call to ask any question</div>
+                            <div class="startup-call-number">+012 345 6789</div>
+                        </div>
+                    </div>
+
+                    <a class="btn btn-primary startup-quote-btn mt-4" href="#">
+                        Request A Quote
+                    </a>
+                </div>
+
+                <!-- Right -->
+                <div class="col-12 col-lg-6">
+                    <div class="startup-image-card h-100">
+                        <img src="images/about.jpg" alt="About meeting" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Scroll to top -->
+    <button class="startup-scrolltop" type="button" @onclick="ScrollToTop" title="Back to top">
+        ↑
+    </button>
+
+</div>
+
+@code {
+    [Inject] private IJSRuntime JS { get; set; } = default!;
+
+    private async Task ScrollToTop()
+        => await JS.InvokeVoidAsync("window.scrollTo", new { top = 0, behavior = "smooth" });
+}
