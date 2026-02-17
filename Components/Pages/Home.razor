@@ -1,7 +1,409 @@
 ﻿@page "/"
+@layout MinimalLayout
+@inherits LayoutComponentBase
+@using TechnicalSupport.Components.Layout
+@using Microsoft.AspNetCore.Components.Web
+@rendermode InteractiveServer
+@inject NavigationManager Nav
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Technical Support</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="acc-page">
 
-Welcome to your new app.
+    <!-- NAVBAR -->
+    @* <header class="acc-nav">
+        <div class="acc-container acc-nav-inner">
+            <a class="acc-brand" href="/">
+                <img src="/images/logo.png" class="acc-logo-img" alt="Company Logo" />
+                <span class="acc-brand-text">Technical Support and Service Co., Ltd.</span>
+            </a>
+
+            <nav class="acc-nav-links">
+                <a class="acc-link" href="/">Home</a>
+                <a class="acc-link" href="/about">About</a>
+                <a class="acc-link" href="/products">Products</a>
+                <a class="acc-link" href="/services">Services</a>
+                <a class="acc-link" href="/solutions">Solutions</a>
+                <a class="acc-link" href="/services">Referrence</a>
+                <a class="acc-link" href="/solutions">News</a>
+                <a class="acc-link" href="/solutions">Contact us</a>
+            </nav>
+
+            <button class="acc-hamburger" type="button" @onclick="ToggleMobileNav" aria-label="Menu">
+                ☰
+            </button>
+        </div>
+
+        <div class="acc-mobile" style="@(_mobileOpen ? "display:block" : "display:none")">
+            <div class="acc-container acc-mobile-inner">
+                <a href="/" class="acc-mobile-link">Home</a>
+                <a href="/about" class="acc-mobile-link">About</a>
+                <a href="/services" class="acc-mobile-link">Services</a>
+                <a href="/blog" class="acc-mobile-link">Blog</a>
+                <a href="/contact" class="acc-mobile-link">Contact</a>
+                <a href="/install" class="acc-btn acc-btn-outline acc-mobile-btn">Install Theme</a>
+            </div>
+        </div>
+    </header> *@
+
+    <header class="acc-nav2">
+        <!-- TOP ROW -->
+        <div class="acc-nav2-top">
+            <div class="acc-container acc-nav2-top-inner">
+                <a class="acc-brand2" href="/">
+                    <img src="/images/logo.png" class="acc-logo-img2" alt="Company Logo" />
+                    <span class="acc-brand-text2">Technical Support and Service Co., Ltd.</span>
+                </a>
+
+                <!-- (Optional) right side: icons / language / profile -->
+                <div class="acc-top-actions">
+                    <!-- Search (pill + button) -->
+                    <div class="acc-search2" role="search">
+                        <input class="acc-search2-input"
+                            placeholder="Search..."
+                            @bind="SearchText"
+                            @bind:event="oninput"
+                            @onkeydown="OnSearchKeyDown" />
+
+                        <button type="button" class="acc-search2-btn" @onclick="DoSearch" aria-label="Search">
+                            🔍
+                        </button>
+                    </div>
+
+
+                    <!-- Language Dropdown -->
+                    <div class="lang-dd">
+                        <button type="button" class="lang-btn" @onclick="ToggleLang" aria-haspopup="listbox" aria-expanded="@_langOpen">
+                            <img class="lang-flag" src="@(Lang == "en" ? "/images/flags/us.png" : "/images/flags/th.png")" alt="flag" />
+                            <span class="lang-text">@(Lang == "en" ? "English" : "ไทย")</span>
+                            <span class="lang-caret">▾</span>
+                        </button>
+
+                        <div class="lang-menu" style="@(_langOpen ? "display:block" : "display:none")" role="listbox">
+                            <button type="button" class="lang-item @(Lang=="en" ? "active" : "")" @onclick='() => SetLang("en")'>
+                                <img class="lang-flag" src="/images/flags/us.png" alt="English" />
+                                English
+                            </button>
+
+                            <button type="button" class="lang-item @(Lang=="th" ? "active" : "")" @onclick='() => SetLang("th")'>
+                                <img class="lang-flag" src="/images/flags/th.png" alt="ไทย" />
+                                ไทย
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button class="acc-hamburger2" type="button" @onclick="ToggleMobileNav" aria-label="Menu">
+                    ☰
+                </button>
+            </div>
+        </div>
+
+        <!-- BOTTOM ROW (MENU) -->
+        <div class="acc-nav2-bottom" style="@(_mobileOpen ? "display:block" : "display:block")">
+            <div class="acc-container acc-nav2-bottom-inner">
+                <nav class="acc-nav2-links" aria-label="Primary">
+                    <a class="acc-nav2-link" href="/">Home</a>
+                    <a class="acc-nav2-link" href="/about">About</a>
+                    <a class="acc-nav2-link" href="/products">Products</a>
+                    <a class="acc-nav2-link" href="/services">Services</a>
+                    <a class="acc-nav2-link" href="/solutions">Solutions</a>
+                    <a class="acc-nav2-link" href="/reference">Reference</a>
+                    <a class="acc-nav2-link" href="/news">News</a>
+                    <a class="acc-nav2-link" href="/contact">Contact us</a>
+                </nav>
+            </div>
+
+            <!-- MOBILE MENU (dropdown panel) -->
+            <div class="acc-nav2-mobile" style="@(_mobileOpen ? "display:block" : "display:none")">
+                <div class="acc-container acc-nav2-mobile-inner">
+                    <a class="acc-nav2-m-link" href="/">Home</a>
+                    <a class="acc-nav2-m-link" href="/about">About</a>
+                    <a class="acc-nav2-m-link" href="/products">Products</a>
+                    <a class="acc-nav2-m-link" href="/services">Services</a>
+                    <a class="acc-nav2-m-link" href="/solutions">Solutions</a>
+                    <a class="acc-nav2-m-link" href="/reference">Reference</a>
+                    <a class="acc-nav2-m-link" href="/news">News</a>
+                    <a class="acc-nav2-m-link" href="/contact">Contact us</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- HERO -->
+    <section class="acc-hero">
+        <div class="acc-hero-overlay"></div>
+
+        <div class="acc-container">
+            <div class="acc-hero-inner">
+                <div class="acc-hero-kicker">Welcome</div>
+                <h1 class="acc-hero-title">
+                    The exclusive and sole distributor in Thailand of specialized
+                    products from leading overseas manufacturers.
+                </h1>
+
+                <button class="acc-btn acc-btn-ghost" @onclick="@(()=>Nav.NavigateTo("/learn"))">
+                    Learn more
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+    @* <!-- PARTNER LOGOS (Marquee) -->
+    <section class="partner-strip">
+        <div class="acc-container">
+            <div class="partner-marquee" aria-label="Partner logos">
+                <div class="partner-track">
+                    <!-- ชุดที่ 1 -->
+                    <img class="partner-logo" src="/images/partners/partner-logo-01.png" alt="Partner 1" />
+                    <img class="partner-logo" src="/images/partners/partner-logo-02.png" alt="Partner 2" />
+                    <img class="partner-logo" src="/images/partners/partner-logo-03.png" alt="Partner 3" />
+                    <img class="partner-logo" src="/images/partners/partner-logo-04.png" alt="Partner 4" />
+                    <img class="partner-logo" src="/images/partners/partner-logo-05.png" alt="Partner 5" />
+                    <img class="partner-logo" src="/images/partners/partner-logo-06.png" alt="Partner 6" />
+                    <img class="partner-logo" src="/images/partners/partner-logo-07.png" alt="Partner 7" />
+                    
+
+                    <!-- ชุดที่ 2 (ซ้ำเพื่อทำ loop เนียน ๆ) -->
+                    <img class="partner-logo" src="/images/partners/partner-logo-01.png" alt="Partner 1" />
+                    <img class="partner-logo" src="/images/partners/partner-logo-02.png" alt="Partner 2" />
+                    <img class="partner-logo" src="/images/partners/partner-logo-03.png" alt="Partner 3" />
+                    <img class="partner-logo" src="/images/partners/partner-logo-04.png" alt="Partner 4" />
+                    <img class="partner-logo" src="/images/partners/partner-logo-05.png" alt="Partner 5" />
+                    <img class="partner-logo" src="/images/partners/partner-logo-06.png" alt="Partner 6" />
+                    <img class="partner-logo" src="/images/partners/partner-logo-07.png" alt="Partner 7" />
+                
+                </div>
+            </div>
+        </div>
+    </section> *@
+
+
+    <!-- FEATURE 1 -->
+    <section class="acc-section">
+        <div class="acc-container acc-grid">
+            <div class="acc-media">
+                <img class="acc-img"
+                     src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=70"
+                     alt="Team working" />
+            </div>
+
+            <div class="acc-content">
+                @* @* <div class="acc-kicker">HUBSPOT CMS</div> *@
+                <h2 class="acc-h2">Build your company website<br />using drag-and-drop.</h2> 
+                <ul class="acc-p">
+                <li>Comprehensive engineering solutions covering design, installation, and after-sales support</li>
+                <li>Exclusive authorized distributor of internationally recognized products</li>
+                <li>Professionally trained sales and technical staff</li>
+                <li>Engineers dedicated to quality, performance, and customer satisfaction</li>
+                </ul>
+
+                <ul class="acc-checklist">
+                    <li>✔ Provide your products</li>
+                    <li>✔ Provide your services</li>
+                    <li>✔ Provide your solutions</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURE 2 (reversed) -->
+    <section class="acc-section acc-section-alt">
+        <div class="acc-container acc-grid">
+
+            <!-- TEXT LEFT -->
+            <div class="acc-content">
+                <div class="acc-kicker">HUBSPOT CMS</div>
+                <h2 class="acc-h2">
+                    Manage your HubSpot<br />website without a developer.
+                </h2>
+                <p class="acc-p">
+                    Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+                    Vivamus suscipit tortor eget felis porttitor volutpat.
+                </p>
+
+                <a class="acc-btn acc-btn-primary" href="/learn">Learn more</a>
+            </div>
+
+            <!-- IMAGE RIGHT -->
+            <div class="acc-media">
+                <img class="acc-img"
+                    src="/images/your-image.jpg"
+                    alt="Call" />
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FEATURE 3 -->
+    <section class="acc-section">
+        <div class="acc-container acc-grid">
+            <div class="acc-media">
+                <img class="acc-img"
+                     src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=1200&q=70"
+                     alt="Laptop" />
+            </div>
+
+            <div class="acc-content">
+                <div class="acc-kicker">HUBSPOT CMS</div>
+                <h2 class="acc-h2">A HubSpot website theme<br />that's easy to use.</h2>
+                <p class="acc-p">
+                    Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+                    Vivamus suscipit tortor eget felis porttitor volutpat.
+                </p>
+
+                <a class="acc-btn acc-btn-primary" href="/learn">Learn more</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="acc-blog">
+        <div class="acc-container">
+            <div class="acc-blog-head">
+                <div class="acc-blog-kicker">FROM THE BLOG</div>
+                <h2 class="acc-h2 acc-center">Recent Blog Posts</h2>
+                <div class="acc-muted acc-center">Show your most recent blog posts on any website page</div>
+            </div>
+
+            <div class="acc-cards">
+                <article class="acc-card">
+                    <img class="acc-card-img"
+                         src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=70"
+                         alt="Blog 1" />
+                    <div class="acc-card-body">
+                        <h3 class="acc-h3">Building a HubSpot integration with Zapier</h3>
+                    </div>
+                </article>
+
+                <article class="acc-card">
+                    <img class="acc-card-img"
+                         src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=70"
+                         alt="Blog 2" />
+                    <div class="acc-card-body">
+                        <h3 class="acc-h3">How to build a website on HubSpot CMS without a developer</h3>
+                    </div>
+                </article>
+
+                <article class="acc-card">
+                    <img class="acc-card-img"
+                         src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=70"
+                         alt="Blog 3" />
+                    <div class="acc-card-body">
+                        <h3 class="acc-h3">10 tips for website conversion rate optimization</h3>
+                    </div>
+                </article>
+            </div>
+
+            <div class="acc-center acc-mt-24">
+                <a class="acc-btn acc-btn-primary" href="/blog">View Posts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFORMATION PARTNERS -->
+    <section class="info-partners">
+        <div class="acc-container">
+            <div class="info-partners-head">
+                <div class="info-partners-title">INFORMATION PARTNERS</div>
+            </div>
+
+            <div class="info-partners-logos" aria-label="Partner logos">
+                <img class="info-partner-logo" src="/images/partners/partner-logo-01.png" alt="Partner 1" />
+                <img class="info-partner-logo" src="/images/partners/partner-logo-02.png" alt="Partner 2" />
+                <img class="info-partner-logo" src="/images/partners/partner-logo-03.png" alt="Partner 3" />
+                <img class="info-partner-logo" src="/images/partners/partner-logo-04.png" alt="Partner 4" />
+                <img class="info-partner-logo" src="/images/partners/partner-logo-05.png" alt="Partner 5" />
+                <img class="info-partner-logo" src="/images/partners/partner-logo-06.png" alt="Partner 6" />
+                <img class="info-partner-logo" src="/images/partners/partner-logo-07.png" alt="Partner 7" />
+                
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- FOOTER -->
+    <footer class="acc-footer">
+        <div class="acc-container acc-footer-grid">
+            <div>
+                <div class="acc-footer-brand">Accelerator</div>
+                <p class="acc-footer-p">
+                    Proin eget tortor risus. Nulla quis lorem ut libero malesuada feugiat.
+                    Vivamus accumsan tincidunt.
+                </p>
+                <div class="acc-social">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="#" aria-label="Twitter">x</a>
+                    <a href="#" aria-label="Instagram">ig</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="acc-footer-title">Pages</div>
+                <a class="acc-footer-link" href="/">Home</a>
+                <a class="acc-footer-link" href="/services">Services</a>
+                <a class="acc-footer-link" href="/portfolio">Portfolio</a>
+                <a class="acc-footer-link" href="/about">About</a>
+                <a class="acc-footer-link" href="/contact">Contact</a>
+                <a class="acc-footer-link" href="/faq">FAQ</a>
+            </div>
+
+            <div>
+                <div class="acc-footer-title">Resources</div>
+                <a class="acc-footer-link" href="/blog">Blog</a>
+                <a class="acc-footer-link" href="/demo">Watch a Demo</a>
+                <a class="acc-footer-link" href="/academy">Academy</a>
+                <a class="acc-footer-link" href="/webinars">Webinars</a>
+                <a class="acc-footer-link" href="/changes">Product Changes</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+@code {
+    // Mobile menu
+    private bool _mobileOpen;
+    private void ToggleMobileNav() => _mobileOpen = !_mobileOpen;
+
+    // Search
+    private string? SearchText;
+
+    private void DoSearch()
+    {
+        var q = (SearchText ?? "").Trim();
+        if (string.IsNullOrWhiteSpace(q))
+            return;
+
+        Nav.NavigateTo($"/search?q={Uri.EscapeDataString(q)}");
+    }
+
+    private void OnSearchKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+            DoSearch();
+    }
+
+    // Language (EN/TH) + dropdown open/close
+    private string Lang = "en";   // "en" | "th"
+    private bool _langOpen;
+
+    private void ToggleLang() => _langOpen = !_langOpen;
+
+    private void SetLang(string lang)
+    {
+        Lang = lang;
+        _langOpen = false; // ✅ เลือกแล้วปิด dropdown
+
+        // TODO: ถ้าจะทำ i18n จริง ค่อยผูก Localizer / Cookie / LocalStorage ตรงนี้
+    }
+}
+

@@ -1,4 +1,4 @@
-/* /Components/Layout/MainLayout.razor.rz.scp.css */
+/* _content/TechnicalSupport/Components/Layout/MainLayout.razor.rz.scp.css */
 .page[b-jkbjxsdilx] {
     position: relative;
     display: flex;
@@ -97,7 +97,7 @@ main[b-jkbjxsdilx] {
         right: 0.75rem;
         top: 0.5rem;
     }
-/* /Components/Layout/NavMenu.razor.rz.scp.css */
+/* _content/TechnicalSupport/Components/Layout/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-gla9p5pahz] {
     appearance: none;
     cursor: pointer;
@@ -203,7 +203,7 @@ main[b-jkbjxsdilx] {
         overflow-y: auto;
     }
 }
-/* /Components/Pages/About.razor.rz.scp.css */
+/* _content/TechnicalSupport/Components/Pages/About.razor.rz.scp.css */
 /* ---------- Page Base ---------- */
 .startup-page[b-np40sudr7o] {
     background: #ffffff;
