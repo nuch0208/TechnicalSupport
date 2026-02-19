@@ -79,4 +79,4 @@ D:\TechnicalSupport\obj\Debug\net9.0\refint\TechnicalSupport.dll
 D:\TechnicalSupport\obj\Debug\net9.0\TechnicalSupport.pdb
 D:\TechnicalSupport\obj\Debug\net9.0\TechnicalSupport.genruntimeconfig.cache
 D:\TechnicalSupport\obj\Debug\net9.0\ref\TechnicalSupport.dll
-D:\TechnicalSupport\obj\Debug\net9.0\compressed\rxkldy6iyo-3lm8a7ngq8.gz
+D:\TechnicalSupport\obj\Debug\net9.0\compressed\rxkldy6iyo-5gwyzcr99o.gz
